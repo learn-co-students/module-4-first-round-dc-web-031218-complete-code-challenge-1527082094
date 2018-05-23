@@ -12,6 +12,7 @@ class YourBotArmy extends React.Component {
             {this.props.army.map(bot => {
               return (
                 <BotCard
+                  in={true}
                   enlistHandler={this.props.enlistHandler}
                   key={bot.id}
                   bot={bot}

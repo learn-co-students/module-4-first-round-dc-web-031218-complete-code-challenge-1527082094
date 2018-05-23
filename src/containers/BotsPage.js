@@ -1,6 +1,7 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -9,7 +10,8 @@ class BotsPage extends React.Component {
 
     this.state = {
       botCollection: [],
-      yourBotArmy: []
+      yourBotArmy: [],
+      currentSegment: null
     };
   }
 
@@ -22,6 +24,18 @@ class BotsPage extends React.Component {
         });
       });
   }
+
+  specsHandler = bot => {
+    this.setState({
+      currentSegment: bot
+    });
+  };
+
+  specsGoBack = () => {
+    this.setState({
+      currentSegment: null
+    });
+  };
 
   enlistHandler = bot => {
     // get the bot id and make things happen based on this id
@@ -40,12 +54,16 @@ class BotsPage extends React.Component {
       this.setState({ yourBotArmy: armyCopy }, x =>
         console.log("state afterwards:", this.state)
       );
+      this.specsHandler(null);
+      return true;
     } else {
+      debugger;
       // bot is already in the army
       // remove from army
       console.log("in false-if // need to remove bot from army");
       console.log("current army:", this.state.yourBotArmy);
-      let updatedArmy = this.state.yourBotArmy.filter(b => {
+      let armyCopy = [...this.state.yourBotArmy];
+      let updatedArmy = armyCopy.filter(b => {
         return b.id !== bot.id;
       });
       console.log("updated army:", updatedArmy);
@@ -53,6 +71,8 @@ class BotsPage extends React.Component {
       this.setState({ yourBotArmy: updatedArmy }, x =>
         console.log("state afterwards:", this.state)
       );
+      this.specsHandler(null);
+      return true;
     }
   };
 
@@ -63,8 +83,13 @@ class BotsPage extends React.Component {
           enlistHandler={this.enlistHandler}
           army={this.state.yourBotArmy}
         />
-        <BotCollection
+        <BotSpecs
           enlistHandler={this.enlistHandler}
+          goBack={this.specsGoBack}
+          bot={this.state.currentSegment}
+        />
+        <BotCollection
+          specsHandler={this.specsHandler}
           collection={this.state.botCollection}
         />
       </div>

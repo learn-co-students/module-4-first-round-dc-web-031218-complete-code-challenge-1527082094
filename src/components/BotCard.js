@@ -19,13 +19,15 @@ const BotCard = props => {
       botType = <div />;
   }
 
+  // what I could do is use enlistHandler and place specsHandler within it's conditional flow?
+  // almost, I think I finally understood the bug as the clock had 2 minutes!
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
         onClick={() => {
-          props.enlistHandler(bot);
+          props.specsHandler(bot);
         }}
       >
         <div className="image">

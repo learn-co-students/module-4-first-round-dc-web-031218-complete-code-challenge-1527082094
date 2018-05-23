@@ -11,7 +11,8 @@ class BotCollection extends React.Component {
           {this.props.collection.map(bot => {
             return (
               <BotCard
-                enlistHandler={this.props.enlistHandler}
+                in={false}
+                specsHandler={this.props.specsHandler}
                 key={bot.id}
                 bot={bot}
               />
