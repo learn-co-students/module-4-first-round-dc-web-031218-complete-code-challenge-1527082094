@@ -19,6 +19,12 @@ const BotSpecs = props => {
       botType = <div />;
   }
 
+  const handleClick = e => {
+    let id = e.target.dataset.id;
+    if (e.target.innerText === "Enlist") props.enlistBot(parseInt(id, 10));
+    if (e.target.innerText === "Go Back") props.changeDisplay(parseInt(id, 10));
+  };
+
   return (
     <div className="ui segment">
       <div className="ui two column centered grid">
@@ -60,19 +66,15 @@ const BotSpecs = props => {
             </div>
             <button
               className="ui button fluid"
-              onClick={() =>
-                console.log('connect this to a function that shows all bots')
-              }
+              data-id={bot.id}
+              onClick={handleClick}
             >
               Go Back
             </button>
             <button
               className="ui button fluid"
-              onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
-              }
+              data-id={bot.id}
+              onClick={handleClick}
             >
               Enlist
             </button>
@@ -81,7 +83,6 @@ const BotSpecs = props => {
       </div>
     </div>
   );
-
 };
 
 export default BotSpecs;

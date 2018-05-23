@@ -3,7 +3,9 @@
   min-height: 300px;
   max-width: 100%;
 }
-
+.bot.column {
+  cursor: pointer;
+}
 .ui.grid > .row.bot-army-row {
   flex-wrap: nowrap;
   min-height: 100%;
