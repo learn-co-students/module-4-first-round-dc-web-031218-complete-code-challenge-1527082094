@@ -18,6 +18,7 @@ class YourBotArmy extends React.Component {
                                      enlistBot={this.props.unenlistBot}/>) 
         : <h1>No Bots Enlisted...</h1>)
   }
+
   render(){
     const botCards = this.getBotCards();
     return (

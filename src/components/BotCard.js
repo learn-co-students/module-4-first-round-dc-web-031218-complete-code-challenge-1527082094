@@ -12,8 +12,10 @@ import React from "react";
         id:
         name:
     },
-    enlistBot:cbf() //is BotsPage::unenlistBot() if it's in 
+    enlistBot:cbf(), //is BotsPage::unenlistBot() if it's in 
                     //YourBotArmy
+                    //is BotsCollection::handleBotSpecs() if in 
+                    //botCollection
   }
 */
 
