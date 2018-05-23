@@ -1,10 +1,27 @@
 import React from "react";
 
+/*
+  props={
+    bot: {
+        armor:
+        avatar_url:
+        bot_class:
+        catchphrase:
+        damage:
+        health:
+        id:
+        name:
+    },
+    enlistBot:cbf() //is BotsPage::unenlistBot() if it's in 
+                    //YourBotArmy
+  }
+*/
+
+
 const BotCard = props => {
   const { bot } = props;
 
   let botType;
-
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon military" />;
@@ -19,12 +36,19 @@ const BotCard = props => {
       botType = <div />;
   }
 
+  //will also handle unenlistment
+  //since props.enlistBot === BotsPage::unenlistBot() if this
+  //bot is in YourBotArmy
+  const handleEnlistment = (e) =>{
+    props.enlistBot(bot);
+  }
+
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={handleEnlistment}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
