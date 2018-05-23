@@ -3,10 +3,9 @@ import BotCard from "../components/BotCard";
 
 class BotCollection extends React.Component {
   //your code here
-  
 
-  handleClick = (e) => {
-    this.props.handleAddToBotArmyClick(e.currentTarget.innerText)
+  handleSpecClick = (e) => {
+    this.props.handleSpecClick(e.currentTarget.innerText)
   }
 
   render(){
@@ -16,7 +15,7 @@ class BotCollection extends React.Component {
     		  {
             this.props.bots.map(bot => {
               return(
-                <BotCard key={bot.id} bot={bot} handleClick={this.handleClick} />
+                <BotCard key={bot.id} bot={bot} handleSpecClick={this.handleSpecClick}  />
               )
             })
           }
